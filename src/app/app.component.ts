@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SeaData } from './model/sea-data';
 import { DataService } from './services/data.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { DataService } from './services/data.service';
 })
 
 export class AppComponent implements OnInit {
+
+  public seaDataArray: SeaData[] = [];
 
   constructor(private dataServ: DataService){
 
@@ -22,7 +25,12 @@ export class AppComponent implements OnInit {
 
     // this.dataServ.getRange().subscribe(number => console.log(number))
 
-    this.dataServ.getCounter().subscribe(count => console.log(count));
+    // this.dataServ.getCounter().subscribe(count => console.log(count));
+
+    this.dataServ.getSeaLevelData().subscribe(data => this.seaDataArray = data);
+
+
+
     
   }
 
